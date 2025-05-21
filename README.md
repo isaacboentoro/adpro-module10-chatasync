@@ -1,0 +1,6 @@
+# Advanced Programming Module 10 - Async Chat
+### Isaac Jesse Boentoro 2306256362
+
+## Original code, and how it runs
+![experiment1](images/experiment1.png)
+1 terminal runs `cargo run --bin server`, while the other three run `cargo run --bin client`. When a client sends the server a message, it is broadcast to all other clients connected to server.
