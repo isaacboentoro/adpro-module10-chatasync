@@ -4,3 +4,7 @@
 ## Original code, and how it runs
 ![experiment1](images/experiment1.png)
 1 terminal runs `cargo run --bin server`, while the other three run `cargo run --bin client`. When a client sends the server a message, it is broadcast to all other clients connected to server.
+
+## Modifying ports
+To modify the port number, we change the `TCPListener` port number in the server and client files.
+The server does not explicitly declare the websocket handler , but it is implementing the protocol spec via the tokio websocket package.
