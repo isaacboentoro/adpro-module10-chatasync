@@ -8,3 +8,7 @@
 ## Modifying ports
 To modify the port number, we change the `TCPListener` port number in the server and client files.
 The server does not explicitly declare the websocket handler , but it is implementing the protocol spec via the tokio websocket package.
+
+## Small changes, add IP and Port
+![experiment2](images/experiment2.png)
+I changed the server and client side code because the server already keeps track which message comes from which address (because when a client connects, an async thread spawns). Each client is assinged a handler, which i can then edit the `addr` arguments of to insert the message.

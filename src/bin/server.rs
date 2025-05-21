@@ -42,11 +42,11 @@ async fn main() -> Result<(), Box<dyn Error + Send + Sync>> {
     let (bcast_tx, _) = channel(16);
 
     let listener = TcpListener::bind("127.0.0.1:8080").await?;
-    println!("listening on port 2000");
+println!("listening on port 8080");
 
     loop {
         let (socket, addr) = listener.accept().await?;
-        println!("New connection from {addr:?}");
+        println!("New connection from Isaac's Machine {addr:?}");
         let bcast_tx_clone = bcast_tx.clone();
         tokio::spawn(async move {
             let task_logic = async {

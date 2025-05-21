@@ -7,7 +7,7 @@ use tokio_websockets::{ClientBuilder, Message};
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn Error + Send + Sync>> { // Changed return type
-    let (mut ws_stream, _) = ClientBuilder::from_uri(Uri::from_static("ws://127.0.0.1:2000"))
+    let (mut ws_stream, _) = ClientBuilder::from_uri(Uri::from_static("ws://127.0.0.1:8080"))
         .connect()
         .await?;
 
@@ -20,7 +20,7 @@ async fn main() -> Result<(), Box<dyn Error + Send + Sync>> { // Changed return 
                 match incoming {
                     Some(Ok(msg)) => {
                         if let Some(text) = msg.as_text() {
-                            println!("From server: {}", text);
+                            println!("{}", text);
                         }
                     },
                     Some(Err(err)) => return Err(err.into()), // .into() will now work with Box<dyn Error>
@@ -36,11 +36,5 @@ async fn main() -> Result<(), Box<dyn Error + Send + Sync>> { // Changed return 
             }
         }
     }
-    // The loop is infinite, so Ok(()) might not be reached if the loop never breaks.
-    // However, if the loop could terminate normally (e.g. specific input), Ok(()) would be needed here.
-    // For this specific infinite loop, the returns inside handle termination.
-    // Adding Ok(()) here for completeness in case the loop structure changes.
-    // Ok(()) // This line is technically unreachable due to the infinite loop with internal returns.
-             // However, if the loop could break, it would be necessary.
-             // Given the current structure, the explicit returns within the loop cover all exit paths.
+
 }
